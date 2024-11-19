@@ -1,18 +1,22 @@
 <style>
-    .list-items .dashicons {float:right}
+    #list-items .dashicons {float:right}
+    .ui-sortable-handle {cursor: n-resize;}
+    .delete-item {cursor: pointer}
 </style>
 
-<div class="container-sm">
+<div class="container-sm items-container">
     <h4><?php echo $result['title'] ?></h4>
-    <button class="btn btn-primary">Create new item</button>
+    <button class="btn btn-primary btn-sm">Create new item</button>
     <div class="card">
         <div class="card-body">
-            <ul class="list-group list-group-flush list-items">
-                <li class="list-group-item">An item  <span class="dashicons dashicons-trash text-danger"></span></li>
-                <li class="list-group-item">A second item <span class="dashicons dashicons-trash"></span></li>
-                <li class="list-group-item">A third item <span class="dashicons dashicons-trash"></span></li>
-                <li class="list-group-item">A fourth item <span class="dashicons dashicons-trash"></span></li>
-                <li class="list-group-item">And a fifth one <span class="dashicons dashicons-trash"></span></li>
+            <ul id="list-items" class="list-group list-group-flush">
+                <?php if ( isset($result['items']) && !empty($result['items']) ): ?>
+                    <?php foreach($result['items'] as $key => $item): ?>
+                        <li id="list_<?php echo $item->id ?>"  class="list-group-item"><?php echo $item->name ?>  <span data-id="<?php echo $item->id ?>" class="delete-item dashicons dashicons-trash text-danger"></span></li>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <li>No data available.</li>
+                <?php endif; ?>
             </ul>
         </div>
        
