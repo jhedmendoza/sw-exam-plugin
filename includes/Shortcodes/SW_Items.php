@@ -15,8 +15,9 @@ class SW_Items {
         $db_manager = new SW_DB_Manager();
         $items = $db_manager->get_data('sw_items', 'position '.$sort);
 
-        foreach ($items as $item) {
-            echo '<p>'.$item->name.'</p>';
-        }
+        foreach ($items as $item) 
+            $list.=$item->name.'<br />';
+        
+        return $list;
     }
 }
