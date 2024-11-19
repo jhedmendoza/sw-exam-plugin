@@ -22,6 +22,7 @@ class SW_Exam_Plugin {
         require_once __DIR__ . '/includes/DB/SW_DB_Manager.php';
         require_once __DIR__ . '/includes/Admin/Pages/SW_Admin_Page.php';
         require_once __DIR__ . '/includes/Admin/Pages/SW_Admin_Settings_Page.php';
+        require_once __DIR__ . '/includes/Shortcodes/SW_Items.php';
     }
     public function init() {
 
@@ -29,6 +30,7 @@ class SW_Exam_Plugin {
         $db_manager->create_items_table();
 
         $admin_settings_page = new SW_Admin_Settings_Page();
+        $item_shortcode = new SW_Items();
     }
    
 }

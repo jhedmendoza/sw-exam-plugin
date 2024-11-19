@@ -101,7 +101,6 @@ function initializeValidation() {
           item_position: {required:'This is required.'},
       },
       errorPlacement: function(error, element) {
-
         error.appendTo(element.parent('.input-group').siblings('.err_container'));
     },
 
