@@ -28,7 +28,7 @@ class SW_Exam_Plugin {
         $db_manager = new SW_DB_Manager();
         $db_manager->create_items_table();
 
-        $admin_page = new SW_Admin_Settings_Page();
+        $admin_settings_page = new SW_Admin_Settings_Page();
     }
    
 }

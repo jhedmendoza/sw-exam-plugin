@@ -7,11 +7,12 @@ class SW_Admin_Page {
 
     public function __construct() {
         add_action('admin_menu', [$this, 'add_page']);
-        add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_assets']);
 
         add_action('wp_ajax_delete_item', [$this, 'delete_item']);
         add_action('wp_ajax_update_item', [$this, 'update_item']);
+        add_action('wp_ajax_insert_item', [$this, 'insert_item']);
 
+        add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_assets']);
     }  
 
     public function add_page() {
@@ -40,11 +41,17 @@ class SW_Admin_Page {
 
     public function enqueue_admin_assets() 
     {
-        $version = '1.0';
-        wp_enqueue_style('bootstrap-admin', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css', [], '5.2.0');
-        wp_enqueue_script('bootstrap-admin','https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js', ['popper'], '5.2.0', true );
+        $version = '1.1';
+
+        wp_enqueue_style('bootstrap-admin', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css', [], '5.3.3');
+        wp_enqueue_style('sw-custom', plugins_url().'/sw-exam-plugin/includes/Admin/Assets/css/custom.css', [], $version);
+
+        wp_enqueue_script('popper','https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js', [], '5.3.3', true );
+        wp_enqueue_script('bootstrap-admin','https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', ['popper'], '5.3.3', true );
         wp_enqueue_script('jquery','https://code.jquery.com/jquery-3.7.1.min.js', [], '3.7.1', true );
         wp_enqueue_script('jquery-ui','https://code.jquery.com/ui/1.14.1/jquery-ui.min.js', ['jquery'], '1.14.1', true );
+        wp_enqueue_script('jquery-validate','https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js', ['jquery'], '1.19.5', true );
+
         wp_enqueue_script('sw-custom', plugins_url().'/sw-exam-plugin/includes/Admin/Assets/js/custom.js', [], $version, true );
     }
 

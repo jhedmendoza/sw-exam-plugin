@@ -27,8 +27,8 @@ class SW_Admin_Settings_Page extends SW_Admin_Page {
 
     public function insert_item() {
 
-        $name     = sanitize_text_field($_POST['name']);
-        $position = sanitize_text_field($_POST['position']);
+        $name     = sanitize_text_field($_POST['item_name']);
+        $position = sanitize_text_field($_POST['item_position']);
 
         $db_manager = new SW_DB_Manager();
 
@@ -54,10 +54,9 @@ class SW_Admin_Settings_Page extends SW_Admin_Page {
             ]);
         }
         exit;
-
     }
 
-    
+
     public function update_item() {
 
         $position = filter_var_array($_POST['position']);

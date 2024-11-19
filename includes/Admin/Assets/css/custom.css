@@ -1,0 +1,4 @@
+#list-items .dashicons {float:right}
+.ui-sortable-handle {cursor: n-resize;}
+.delete-item {cursor: pointer}
+.error {color:red; font-size:12px}
